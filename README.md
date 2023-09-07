@@ -4,6 +4,10 @@
 
 Bem-vindo ao MiscellaneousAPI, uma API versátil para recursos diversos que podem ser úteis em projetos Spigot. Esta API foi desenvolvida para facilitar a integração de uma variedade de funcionalidades em servidores, economizando tempo e esforço de desenvolvimento.
 
+## Colaboradores
+
+Sinta-se a vontade para colaborar com o projeto! ♥
+
 ## Pré-requisitos
 
 Antes de começar a usar a MiscellaneousAPI, você precisará ter o seguinte software instalado:
