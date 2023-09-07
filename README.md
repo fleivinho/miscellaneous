@@ -17,8 +17,8 @@ Você pode baixar e aplicar em seu projeto como também poderá utiliza-lo como 
 
 ## Como Usar
 
-Aqui está um exemplo de como usar a MiscellaneousAPI em seu projeto:
-
+Aqui estão alguns exemplos de como usar a MiscellaneousAPI em seu projeto:
+### Carregando classes de comandos e eventos
 ```java
 // Exemplo de código em Java
 import org.miscellaneous.MiscellaneousAPI;
@@ -38,3 +38,26 @@ public class MeuPlugin extends JavaPlugin {
         classLoader.init("org.miscellaneous.plugin.events").loadEvents();
     }
 }
+```
+
+### Criando um comando
+```java
+// Exemplo de código em Java
+import org.miscellaneous.frameworks.command.BukkitCommand;
+import org.miscellaneous.frameworks.command.BukkitSender;
+
+public class MiscCommand extends BukkitCommand {
+
+    public MiscCommand() {
+        super("misc");
+        setAliases("miscellaneous");
+    }
+
+    @Override
+    public boolean onExecute(BukkitSender commandSender, String label, String[] args) {
+        commandSender.sendMessage("§aEste servidor é aprimorado com §fMiscellaneousAPI§a!");
+        commandSender.sendMessage("§aNosso projeto: §fhttps://github.com/fleivinho/miscellaneous");
+        return true;
+    }
+}
+```
