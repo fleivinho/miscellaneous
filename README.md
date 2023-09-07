@@ -22,14 +22,19 @@ Aqui está um exemplo de como usar a MiscellaneousAPI em seu projeto:
 ```java
 // Exemplo de código em Java
 import org.miscellaneous.MiscellaneousAPI;
+import org.miscellaneous.apis.classloader.ClassLoader;
 
-public class MeuPlugin {
+public class MeuPlugin extends JavaPlugin {
 
-    public static void main(String[] args) {
-        // Inicialize a MiscellaneousAPI
-        MiscellaneousAPI api = new MiscellaneousAPI();
+    @Override
+    public void onEnable() {
+        instance = this;
 
-        // Use os recursos da API
-        
+        MiscellaneousAPI miscellaneousAPI = MiscellaneousAPI.getAPI();
+        //                                = new MiscellaneousAPI();
+
+        ClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
+        classLoader.init("org.miscellaneous.plugin.commands").loadCommands();
+        classLoader.init("org.miscellaneous.plugin.events").loadEvents();
     }
 }
