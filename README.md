@@ -8,7 +8,7 @@ Bem-vindo ao MiscellaneousAPI, uma API versátil para recursos diversos que pode
 
 Antes de começar a usar a MiscellaneousAPI, você precisará ter o seguinte software instalado:
 
-- **Spigot**: A API é projetada para ser usada em servidores Minecraft Spigot.
+- **Spigot**: A API é projetada para ser usada em servidores 1.8x a 1.19x
 - **Java**: Certifique-se de que você tenha uma versão compatível do Java instalada.
 
 ## Instalação
