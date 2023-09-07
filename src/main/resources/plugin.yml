@@ -1,4 +1,4 @@
 name: Miscellaneous
 version: '${project.version}'
-main: org.miscellaneous.MiscellaneousAPI
+main: org.miscellaneous.plugin.MiscellaneousPlugin
 api-version: '1.13'
