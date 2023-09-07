@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.miscellaneous.frameworks.command.CommandRegistry;
 import org.miscellaneous.plugin.MiscellaneousPlugin;
 
 @RequiredArgsConstructor
@@ -18,6 +19,8 @@ public class ClassLoader {
     @Getter
     @Setter
     private String packageName;
+
+    private final CommandRegistry commandRegistry = new CommandRegistry();
 
     public ClassLoader init(String packageName) {
         ClassLoader classLoader = new ClassLoader(plugin);
@@ -63,9 +66,10 @@ public class ClassLoader {
                 MiscellaneousPlugin.getInstance().getLogger().info("Listener " + classes.getName() + " carregada!");
                 Bukkit.getPluginManager().registerEvents((Listener) classes.newInstance(), plugin);
             } else if (instance instanceof Command) {
-
+                Command command = (Command) classes.newInstance();
+                MiscellaneousPlugin.getInstance().getLogger().info("Comando " + command.getName() + " carregado!");
+                commandRegistry.registerCommand(plugin, command);
             }
-
         }
     }
 

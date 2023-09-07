@@ -1,9 +1,9 @@
 package org.miscellaneous.frameworks.command;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.lang.reflect.Field;
 
 public class CommandRegistry {
@@ -20,7 +20,7 @@ public class CommandRegistry {
         }
     }
 
-    public void registerCommand(JavaPlugin plugin, BukkitCommand command) {
+    public void registerCommand(JavaPlugin plugin, Command command) {
         commandMap.register(plugin.getName(), command);
     }
 }

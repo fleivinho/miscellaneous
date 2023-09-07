@@ -1,0 +1,9 @@
+org\miscellaneous\frameworks\command\BukkitSender.class
+org\miscellaneous\plugin\MiscellaneousPlugin.class
+org\miscellaneous\MiscellaneousAPI.class
+org\miscellaneous\apis\classloader\ClassLoader.class
+org\miscellaneous\frameworks\command\BukkitCommand.class
+org\miscellaneous\frameworks\command\CommandRegistry.class
+org\miscellaneous\plugin\commands\MiscCommand.class
+org\miscellaneous\apis\classloader\ClassLoader$LoaderType.class
+org\miscellaneous\apis\classloader\ClassGetter.class

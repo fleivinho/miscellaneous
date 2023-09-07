@@ -15,13 +15,8 @@ public class MiscellaneousPlugin extends JavaPlugin {
         instance = this;
 
         MiscellaneousAPI miscellaneousAPI = MiscellaneousAPI.getAPI();
-        //                                = new MiscellaneousAPI();
-
         ClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
         classLoader.init("org.miscellaneous.plugin.commands").loadCommands();
-        classLoader.init("org.miscellaneous.plugin.events").loadEvents();
-        //                                    ("org.miscellaneous.plugin").loadAll();
-
 
     }
 
