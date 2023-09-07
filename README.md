@@ -23,8 +23,8 @@ Você pode baixar e aplicar em seu projeto como também poderá utiliza-lo como 
 
 Aqui estão alguns exemplos de como usar a MiscellaneousAPI em seu projeto:
 ### Carregando classes de comandos e eventos
+
 ```java
-// Exemplo de código em Java
 import org.miscellaneous.MiscellaneousAPI;
 import org.miscellaneous.apis.classloader.ClassLoader;
 
@@ -45,8 +45,8 @@ public class MeuPlugin extends JavaPlugin {
 ```
 
 ### Criando um comando
+
 ```java
-// Exemplo de código em Java
 import org.miscellaneous.frameworks.command.BukkitCommand;
 import org.miscellaneous.frameworks.command.BukkitSender;
 
@@ -64,4 +64,3 @@ public class MiscCommand extends BukkitCommand {
         return true;
     }
 }
-```
