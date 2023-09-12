@@ -22,7 +22,7 @@ Aqui está um exemplo de como usar a MiscellaneousAPI em seu projeto:
 ```java
 // Exemplo de código em Java
 import org.miscellaneous.MiscellaneousAPI;
-import org.miscellaneous.apis.classloader.ClassLoader;
+import org.miscellaneous.apis.classloader.MiscellaneousClassLoader;
 
 public class MeuPlugin extends JavaPlugin {
 

@@ -1,4 +1,4 @@
-package org.miscellaneous.apis.classloader;
+package org.miscellaneous.apis.classloader.getter;
 
 import java.io.File;
 import java.io.IOException;

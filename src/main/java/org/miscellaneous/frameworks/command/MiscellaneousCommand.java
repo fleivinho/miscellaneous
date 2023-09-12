@@ -6,22 +6,22 @@ import org.bukkit.command.CommandSender;
 
 import java.util.Arrays;
 
-public abstract class BukkitCommand extends Command {
+public abstract class MiscellaneousCommand extends Command {
 
     @Getter
-    private BukkitSender commandSender;
+    private MiscellaneousSender commandSender;
 
-    public BukkitCommand(String name) {
+    public MiscellaneousCommand(String name) {
         super(name);
     }
 
-    public BukkitCommand(String name, String description, String[] aliases) {
+    public MiscellaneousCommand(String name, String description, String[] aliases) {
         super(name, description, "", Arrays.asList(aliases));
     }
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
-        this.commandSender = new BukkitSender(sender);
+        this.commandSender = new MiscellaneousSender(sender);
 
         if (getPermission() != null && !getPermission().isEmpty() && !commandSender.hasPermission(getPermission())) {
             commandSender.sendMessage("§cÉ necessário a permissão §f" + getPermission() + "§c!");
@@ -31,7 +31,7 @@ public abstract class BukkitCommand extends Command {
         return onExecute(commandSender, label, args);
     }
 
-    public abstract boolean onExecute(BukkitSender commandSender, String label, String[] args);
+    public abstract boolean onExecute(MiscellaneousSender commandSender, String label, String[] args);
 
     public void setAliases(String... aliases) {
         this.setAliases(Arrays.asList(aliases));

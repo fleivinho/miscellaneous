@@ -2,49 +2,39 @@ package org.miscellaneous.apis.classloader;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.miscellaneous.frameworks.command.CommandRegistry;
+import org.miscellaneous.apis.classloader.getter.ClassGetter;
+import org.miscellaneous.frameworks.command.register.CommandRegistry;
 import org.miscellaneous.plugin.MiscellaneousPlugin;
 
 @RequiredArgsConstructor
-public class ClassLoader {
+public final class MiscellaneousClassLoader {
 
     @Getter
     private final JavaPlugin plugin;
 
-    @Getter
-    @Setter
-    private String packageName;
-
     private final CommandRegistry commandRegistry = new CommandRegistry();
 
-    public ClassLoader init(String packageName) {
-        ClassLoader classLoader = new ClassLoader(plugin);
-        classLoader.setPackageName(packageName);
-        return classLoader;
+    public void loadCommands(String packageName) {
+        prepareLoad(packageName, LoaderType.COMMAND);
     }
 
-    public void loadCommands() {
-        prepareLoad(LoaderType.COMMAND);
+    public void loadEvents(String packageName) {
+        prepareLoad(packageName, LoaderType.LISTENER);
     }
 
-    public void loadEvents() {
-        prepareLoad(LoaderType.LISTENER);
+    public void loadAll(String packageName) {
+        prepareLoad(packageName, LoaderType.ALL);
     }
 
-    public void loadAll() {
-        prepareLoad(LoaderType.ALL);
+    public void load(String packageName, LoaderType loaderType) {
+        prepareLoad(packageName, loaderType);
     }
 
-    public void load(LoaderType loaderType) {
-        prepareLoad(loaderType);
-    }
-
-    private void prepareLoad(LoaderType loaderType) {
+    private void prepareLoad(String packageName, LoaderType loaderType) {
         if (plugin == null) throw new IllegalArgumentException("Plugin is not set!");
         if (packageName == null) throw new IllegalArgumentException("Package name is not set!");
         for (Class<?> classes : ClassGetter.getClassesForPackage(plugin, packageName)) {
@@ -63,11 +53,11 @@ public class ClassLoader {
             Object instance = (Object) classes.newInstance();
 
             if (instance instanceof Listener) {
-                MiscellaneousPlugin.getInstance().getLogger().info("Listener " + classes.getName() + " carregada!");
+                MiscellaneousPlugin.miscellaneous().getLogger().info("Listener " + classes.getName() + " carregada!");
                 Bukkit.getPluginManager().registerEvents((Listener) classes.newInstance(), plugin);
             } else if (instance instanceof Command) {
                 Command command = (Command) classes.newInstance();
-                MiscellaneousPlugin.getInstance().getLogger().info("Comando " + command.getName() + " carregado!");
+                MiscellaneousPlugin.miscellaneous().getLogger().info("Comando " + command.getName() + " carregado!");
                 commandRegistry.registerCommand(plugin, command);
             }
         }

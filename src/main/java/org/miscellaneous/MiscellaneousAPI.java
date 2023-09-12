@@ -1,20 +1,16 @@
 package org.miscellaneous;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.miscellaneous.apis.classloader.ClassLoader;
+import org.miscellaneous.apis.classloader.MiscellaneousClassLoader;
 import org.miscellaneous.plugin.MiscellaneousPlugin;
 
 public class MiscellaneousAPI {
 
-    public ClassLoader getClassLoader(JavaPlugin instance) {
-        return new ClassLoader(instance);
+    public MiscellaneousClassLoader getClassLoader(JavaPlugin instance) {
+        return new MiscellaneousClassLoader(instance);
     }
 
-    public static MiscellaneousAPI getAPI() {
-        return new MiscellaneousAPI();
-    }
-
-    public static MiscellaneousPlugin getPlugin() {
-        return MiscellaneousPlugin.getInstance();
+    public MiscellaneousPlugin getPlugin() {
+        return MiscellaneousPlugin.miscellaneous();
     }
 }

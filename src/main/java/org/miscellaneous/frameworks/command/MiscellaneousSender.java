@@ -3,7 +3,6 @@ package org.miscellaneous.frameworks.command;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
@@ -16,12 +15,12 @@ import java.text.Normalizer;
 import java.util.Set;
 import java.util.UUID;
 
-public class BukkitSender implements CommandSender {
+public class MiscellaneousSender implements CommandSender {
 
     @Getter
     private final CommandSender commandSender;
 
-    public BukkitSender(CommandSender commandSender) {
+    public MiscellaneousSender(CommandSender commandSender) {
         this.commandSender = commandSender;
     }
 
@@ -66,17 +65,6 @@ public class BukkitSender implements CommandSender {
             sendMessage(string);
         }
     }
-
-    @Override
-    public void sendMessage(@Nullable UUID sender, @NotNull String message) {
-
-    }
-
-    @Override
-    public void sendMessage(@Nullable UUID sender, @NotNull String... messages) {
-
-    }
-
 
     @Override
     public Server getServer() {

@@ -1,4 +1,4 @@
-package org.miscellaneous.frameworks.command;
+package org.miscellaneous.frameworks.command.register;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
