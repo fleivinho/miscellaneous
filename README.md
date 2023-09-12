@@ -32,13 +32,10 @@ public class MeuPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
-
         MiscellaneousAPI miscellaneousAPI = new MiscellaneousAPI();
-
-        ClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
-        classLoader.init("org.miscellaneous.plugin.commands").loadCommands();
-        classLoader.init("org.miscellaneous.plugin.events").loadEvents();
+        MiscellaneousClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
+        classLoader.load("org.miscellaneous.plugin.commands",
+                MiscellaneousClassLoader.LoaderType.COMMAND);
     }
 }
 ```
