@@ -36,6 +36,8 @@ public class MeuPlugin extends JavaPlugin {
         MiscellaneousClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
         classLoader.load("org.miscellaneous.plugin.commands",
                 MiscellaneousClassLoader.LoaderType.COMMAND);
+        classLoader.load("org.miscellaneous.plugin.events",
+                MiscellaneousClassLoader.LoaderType.LISTENER);
     }
 }
 ```
