@@ -4,6 +4,10 @@
 
 Bem-vindo ao MiscellaneousAPI, uma API versátil para recursos diversos que podem ser úteis em projetos Spigot. Esta API foi desenvolvida para facilitar a integração de uma variedade de funcionalidades em servidores, economizando tempo e esforço de desenvolvimento.
 
+## Colaboradores
+
+Sinta-se a vontade para colaborar com o projeto! ♥
+
 ## Pré-requisitos
 
 Antes de começar a usar a MiscellaneousAPI, você precisará ter o seguinte software instalado:
@@ -17,10 +21,10 @@ Você pode baixar e aplicar em seu projeto como também poderá utiliza-lo como 
 
 ## Como Usar
 
-Aqui está um exemplo de como usar a MiscellaneousAPI em seu projeto:
+Aqui estão alguns exemplos de como usar a MiscellaneousAPI em seu projeto:
+### Carregando classes de comandos e eventos
 
 ```java
-// Exemplo de código em Java
 import org.miscellaneous.MiscellaneousAPI;
 import org.miscellaneous.apis.classloader.MiscellaneousClassLoader;
 
@@ -28,13 +32,33 @@ public class MeuPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
+        MiscellaneousAPI miscellaneousAPI = new MiscellaneousAPI();
+        MiscellaneousClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
+        classLoader.load("org.miscellaneous.plugin.commands",
+                MiscellaneousClassLoader.LoaderType.COMMAND);
+        classLoader.load("org.miscellaneous.plugin.events",
+                MiscellaneousClassLoader.LoaderType.LISTENER);
+    }
+}
+```
 
-        MiscellaneousAPI miscellaneousAPI = MiscellaneousAPI.getAPI();
-        //                                = new MiscellaneousAPI();
+### Criando um comando
 
-        ClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
-        classLoader.init("org.miscellaneous.plugin.commands").loadCommands();
-        classLoader.init("org.miscellaneous.plugin.events").loadEvents();
+```java
+import org.miscellaneous.frameworks.command.BukkitCommand;
+import org.miscellaneous.frameworks.command.BukkitSender;
+
+public class MiscCommand extends BukkitCommand {
+
+    public MiscCommand() {
+        super("misc");
+        setAliases("miscellaneous");
+    }
+
+    @Override
+    public boolean onExecute(BukkitSender commandSender, String label, String[] args) {
+        commandSender.sendMessage("§aEste servidor é aprimorado com §fMiscellaneousAPI§a!");
+        commandSender.sendMessage("§aNosso projeto: §fhttps://github.com/fleivinho/miscellaneous");
+        return true;
     }
 }
