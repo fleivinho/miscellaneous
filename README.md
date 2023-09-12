@@ -34,8 +34,7 @@ public class MeuPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        MiscellaneousAPI miscellaneousAPI = MiscellaneousAPI.getAPI();
-        //                                = new MiscellaneousAPI();
+        MiscellaneousAPI miscellaneousAPI = new MiscellaneousAPI();
 
         ClassLoader classLoader = miscellaneousAPI.getClassLoader(this);
         classLoader.init("org.miscellaneous.plugin.commands").loadCommands();
