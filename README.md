@@ -45,10 +45,15 @@ public class MeuPlugin extends JavaPlugin {
 ### Criando um comando
 
 ```java
-import org.miscellaneous.frameworks.command.BukkitCommand;
-import org.miscellaneous.frameworks.command.BukkitSender;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.miscellaneous.apis.itemcreator.MiscellaneousItemCreator;
+import org.miscellaneous.apis.location.MiscellaneousLocationSerializer;
+import org.miscellaneous.frameworks.command.MiscellaneousCommand;
+import org.miscellaneous.frameworks.command.MiscellaneousSender;
+import org.miscellaneous.plugin.MiscellaneousPlugin;
 
-public class MiscCommand extends BukkitCommand {
+public class MiscCommand extends MiscellaneousCommand {
 
     public MiscCommand() {
         super("misc");
@@ -56,9 +61,18 @@ public class MiscCommand extends BukkitCommand {
     }
 
     @Override
-    public boolean onExecute(BukkitSender commandSender, String label, String[] args) {
-        commandSender.sendMessage("§aEste servidor é aprimorado com §fMiscellaneousAPI§a!");
+    public boolean onExecute(MiscellaneousSender commandSender, String label, String[] args) {
+        MiscellaneousPlugin miscellaneousPlugin = MiscellaneousPlugin.miscellaneous();
+
+        commandSender.sendMessage("§aEste servidor é aprimorado com §f" + miscellaneousPlugin.getName() + " v" + miscellaneousPlugin.getDescription().getVersion() + "§a!");
         commandSender.sendMessage("§aNosso projeto: §fhttps://github.com/fleivinho/miscellaneous");
+
+        if (commandSender.isPlayer()) {
+            Player player = commandSender.getPlayer();
+            player.getInventory().addItem(new MiscellaneousItemCreator(Material.DIAMOND).setDisplayName("§bDiamante Lindo!").getItemStack());
+            player.sendMessage("§eSua localização serialize: §f" + MiscellaneousLocationSerializer.serializeLocation(player.getLocation()));
+        }
+
         return true;
     }
 }
