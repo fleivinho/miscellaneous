@@ -20,9 +20,4 @@ public class MiscellaneousPlugin extends JavaPlugin {
 
     }
 
-    @Override
-    public void onDisable() {
-
-    }
-
 }
